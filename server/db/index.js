@@ -7,6 +7,10 @@ const Pet = require('./models/Pet');
 const Cart = require('./models/Cart');
 
 //associations could go here!
+User.hasOne(Cart);
+Cart.belongsTo(User);
+Cart.hasMany(Pet);
+Pet.belongsTo(Cart);
 
 User.hasOne(Cart);
 Cart.belongsTo(User);
