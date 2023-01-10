@@ -2,7 +2,7 @@
 
 const {
 	db,
-	models: { User, Dog, Cat },
+	models: { User, Pet },
 } = require('../server/db');
 
 const { faker } = require('@faker-js/faker');
@@ -24,37 +24,52 @@ async function seed() {
 		});
 	}
 
-	const fakeDogs = [];
-	for (let i = 0; i < 50; i++) {
-		fakeDogs.push({
-			name: faker.name.firstName(),
-			breed: faker.animal.dog(),
-			imageUrl: faker.image.imageUrl(250, 250, 'dog'),
-			price: faker.datatype.number({ min: 200, max: 1000 }),
-			weight: faker.datatype.number({ min: 4, max: 200 }),
-		});
-	}
+	// const fakeDogs = [];
+	// for (let i = 0; i < 50; i++) {
+	// 	fakeDogs.push({
+	// 		name: faker.name.firstName(),
+	// 		breed: faker.animal.dog(),
+	// 		imageUrl: faker.image.imageUrl(250, 250, 'dog'),
+	// 		price: faker.datatype.number({ min: 200, max: 1000 }),
+	// 		weight: faker.datatype.number({ min: 4, max: 200 }),
+	// 	});
+	// }
 
-	const fakeCats = [];
+	// const fakeCats = [];
+	// for (let i = 0; i < 50; i++) {
+	// 	fakeCats.push({
+	// 		name: faker.name.firstName(),
+	// 		breed: faker.animal.cat(),
+	// 		imageUrl: faker.image.imageUrl(250, 250, 'cat'),
+	// 		price: faker.datatype.number({ min: 200, max: 1000 }),
+	// 		weight: faker.datatype.number({ min: 5, max: 25 }),
+	// 	});
+	// }
+    
+	const fakePets = [];
 	for (let i = 0; i < 50; i++) {
-		fakeCats.push({
+        let type = Math.random() < .5 ? 'cat' : 'dog';
+        let breed = type === 'cat' ? faker.animal.cat() : faker.animal.dog();
+        let imageUrl = faker.image.imageUrl(250, 250, type);
+		fakePets.push({
 			name: faker.name.firstName(),
-			breed: faker.animal.cat(),
-			imageUrl: faker.image.imageUrl(250, 250, 'cat'),
+			breed: breed,
+            type: type,
+            description: faker.commerce.productDescription(),
+			imageUrl: imageUrl,
 			price: faker.datatype.number({ min: 200, max: 1000 }),
 			weight: faker.datatype.number({ min: 5, max: 25 }),
 		});
 	}
 
 	// use Promise.all to create User, Dog, and Cat models
-	const [users, dogs, cats] = await Promise.all([
+	const [users, pets] = await Promise.all([
 		User.bulkCreate(fakeUsers),
-		Dog.bulkCreate(fakeDogs),
-		Cat.bulkCreate(fakeCats),
+		Pet.bulkCreate(fakePets),
 	]);
 
 	console.log(
-		`seeded ${users.length} users, ${dogs.length} dogs, ${cats.length} cats`
+		`seeded ${users.length} users, ${pets.length} pets`
 	);
 	console.log(`seeded successfully`);
 	// return {
