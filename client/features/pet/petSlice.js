@@ -22,6 +22,6 @@ export const petSlice = createSlice({
   })
 })
 
-export const selectPet = (state) => state.campus
+export const selectPet = (state) => state.pet
 
 export default petSlice.reducer
