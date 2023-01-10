@@ -1,4 +1,4 @@
-"name": "grace_shopper",
+{ "name": "grace_shopper",
 	"version": "2.0.0",
 	"description": "Some boilerplate code to get you started - get shakin'!",
 	"main": "index.js",
@@ -51,3 +51,4 @@
 		"webpack": "^5.74.0",
 		"webpack-cli": "^4.10.0"
 	}
+}
