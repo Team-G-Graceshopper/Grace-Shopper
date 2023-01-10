@@ -2,29 +2,15 @@
 
 const db = require('./db');
 
-<<<<<<< Updated upstream
-const User = require('./models/User')
-=======
 const User = require('./models/User');
-const Dog = require('./models/Dog');
-const Cat = require('./models/Cat');
->>>>>>> Stashed changes
+const Pet = require('./models/Pet');
 
 //associations could go here!
 
 module.exports = {
-<<<<<<< Updated upstream
-  db,
-  models: {
-    User,
-  },
-}
-=======
 	db,
 	models: {
 		User,
-        Dog,
-        Cat,
+        Pet,
 	},
 };
->>>>>>> Stashed changes

@@ -1,11 +1,8 @@
 const router = require('express').Router();
 module.exports = router;
 
-<<<<<<< Updated upstream
-router.use('/users', require('./users'))
-=======
 router.use('/users', require('./users'));
->>>>>>> Stashed changes
+router.use('/pets', require('./pets'));
 
 router.use((req, res, next) => {
 	const error = new Error('Not Found');
