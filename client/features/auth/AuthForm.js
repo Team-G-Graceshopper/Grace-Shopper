@@ -9,16 +9,16 @@ import { authenticate } from '../../app/store';
 **/
 
 const AuthForm = ({ name, displayName }) => {
-  const { error } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+	const { error } = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    const formName = evt.target.name;
-    const username = evt.target.username.value;
-    const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: formName }));
-  };
+	const handleSubmit = (evt) => {
+		evt.preventDefault();
+		const formName = evt.target.name;
+		const username = evt.target.username.value;
+		const password = evt.target.password.value;
+		dispatch(authenticate({ username, password, method: formName }));
+	};
 
   return (
     <div>
