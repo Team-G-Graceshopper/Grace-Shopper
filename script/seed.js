@@ -22,29 +22,7 @@ async function seed() {
 			username: faker.internet.userName(),
 			password: faker.internet.password(),
 		});
-	}
-
-	// const fakeDogs = [];
-	// for (let i = 0; i < 50; i++) {
-	// 	fakeDogs.push({
-	// 		name: faker.name.firstName(),
-	// 		breed: faker.animal.dog(),
-	// 		imageUrl: faker.image.imageUrl(250, 250, 'dog'),
-	// 		price: faker.datatype.number({ min: 200, max: 1000 }),
-	// 		weight: faker.datatype.number({ min: 4, max: 200 }),
-	// 	});
-	// }
-
-	// const fakeCats = [];
-	// for (let i = 0; i < 50; i++) {
-	// 	fakeCats.push({
-	// 		name: faker.name.firstName(),
-	// 		breed: faker.animal.cat(),
-	// 		imageUrl: faker.image.imageUrl(250, 250, 'cat'),
-	// 		price: faker.datatype.number({ min: 200, max: 1000 }),
-	// 		weight: faker.datatype.number({ min: 5, max: 25 }),
-	// 	});
-	// }
+	}	
     
 	const fakePets = [];
 	for (let i = 0; i < 50; i++) {
