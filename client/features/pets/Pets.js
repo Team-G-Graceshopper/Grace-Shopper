@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchPetsAsync, selectPets } from './petsSlice';
-import { addCartAsync } from '../cart/cartSlice';
 import { updatePetAsync } from '../pet/petSlice';
 
 const Pets = () => {
