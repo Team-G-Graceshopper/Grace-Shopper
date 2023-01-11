@@ -28,7 +28,7 @@ const AppRoutes = () => {
 					<Route to='/home' element={<Home />} />
 					<Route path='/pets' element={<Pets />} />
 					<Route path='/pets/:Id' element={<Pet />} />
-					<Route path='/cart/:Id' element={<Cart />} />
+					<Route path='/cart' element={<Cart />} />
 				</Routes>
 			) : (
 				<Routes>
