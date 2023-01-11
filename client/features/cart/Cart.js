@@ -2,29 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import {
-	fetchCartAsync,
-	fetchUserAsync,
-	selectCart,
-	selectUser,
-} from './cartSlice';
+import { fetchCartAsync, selectCart } from './cartSlice';
 
 const Cart = () => {
 	const dispatch = useDispatch();
-	const test = useSelector((state) => state.auth.me);
-	const user = useSelector(selectUser);
+	const { Id } = useParams();
+	const cart = useSelector(selectCart);
 
 	useEffect(() => {
-		dispatch(fetchUserAsync(test.id));
+		dispatch(fetchCartAsync(Id));
 	}, [dispatch]);
 
-	console.log(user.pets);
+	console.log(cart);
 
 	return (
 		<>
-			{user.pets
-				? user.pets.map((p) => {
-						return <div key={p.id}>{p.name}</div>;
+			{cart
+				? cart.map((pet) => {
+						return <div key={pet.id}>{pet.name}</div>;
 				  })
 				: null}
 		</>
