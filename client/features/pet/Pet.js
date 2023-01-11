@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPetAsync, selectPet } from './petSlice';
@@ -12,22 +13,16 @@ const Pet = () => {
 		dispatch(fetchPetAsync(Id));
 	}, [dispatch]);
 
-	useEffect(() => {
-		if (pet.name) {
-			setP(pet);
-		}
-	}, [pet]);
-
 	return (
 		<>
 			<div className='singlePet'>
 				<ul>
-					<li>{p.name}</li>
-					<li>${p.price}</li>
-					<li>{p.breed}</li>
-					<li>{p.weight}</li>
-					<li>{p.description}</li>
-					<img src={p.imageUrl} />
+					<img src={pet.imageUrl} />
+					<li>{pet.name}</li>
+					<li>${pet.price}</li>
+					<li>{pet.breed}</li>
+					<li>{pet.weight}</li>
+					<li>{pet.description}</li>
 				</ul>
 			</div>
 		</>
