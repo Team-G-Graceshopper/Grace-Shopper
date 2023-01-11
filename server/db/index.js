@@ -11,25 +11,12 @@ User.hasOne(Cart);
 Cart.belongsTo(User);
 Cart.hasMany(Pet);
 Pet.belongsTo(Cart);
-<<<<<<< Updated upstream
-
-User.hasOne(Cart);
-Cart.belongsTo(User);
-Cart.hasMany(Pet);
-Pet.belongsTo(Cart);
-=======
->>>>>>> Stashed changes
 
 module.exports = {
 	db,
 	models: {
 		User,
-<<<<<<< Updated upstream
-        Pet,
-        Cart,
-=======
 		Pet,
 		Cart,
->>>>>>> Stashed changes
 	},
 };

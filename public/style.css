@@ -36,7 +36,7 @@ form div {
 	border: 1px solid black;
 	padding: 1rem;
 	width: 15vw;
-	height: 17vh;
+	height: auto;
 	overflow: scroll;
 	margin: 1rem;
 }

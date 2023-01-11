@@ -1,27 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import authReducer from '../features/auth/authSlice';
+import petSlice from '../features/pet/petSlice';
+import petsSlice from '../features/pets/petsSlice';
 
 const store = configureStore({
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  reducer: { auth: authReducer },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-=======
-	reducer: {
-		auth: authReducer,
-		pets: petsSlice,
-	},
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
->>>>>>> Stashed changes
-=======
 	reducer: {
 		auth: authReducer,
 		pets: petsSlice,
 		pet: petSlice,
 	},
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
->>>>>>> Stashed changes
 });
 
 export default store;

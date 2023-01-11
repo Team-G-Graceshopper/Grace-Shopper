@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -17,17 +17,17 @@ const Pet = () => {
 		<>
 			{pet ? (
 				<div className='singlePet'>
-					<ul>
-						<li>{pet.name}</li>
-						<li>${pet.price}</li>
-						<li>{pet.breed}</li>
-						<li>{pet.weight}</li>
-						<li>{pet.description}</li>
 						<img src={pet.imageUrl} />
-					</ul>
+						<label>{`Name: ${pet.name}`}</label>
+						<label>{`Price: $ ${pet.price}`}</label>
+						<label>{`Type: ${pet.type}`}</label>
+						<label>{`Breed: ${pet.breed}`}</label>
+						<label>{`Weight: ${pet.weight} lbs.`}</label>
+						<label>Description:</label>
+						<p>{pet.description}</p>
 				</div>
 			) : (
-				<p>no pet</p>
+				<p>Pet not found</p>
 			)}
 		</>
 	);

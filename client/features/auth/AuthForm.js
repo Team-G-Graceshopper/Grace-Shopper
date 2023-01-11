@@ -38,15 +38,7 @@ const AuthForm = ({ name, displayName }) => {
 				<div>
 					<button type='submit'>{displayName}</button>
 				</div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-				{error && <div> {error} </div>}
-=======
 				{/* {error && <div> {error} </div>} */}
->>>>>>> Stashed changes
-=======
-				{/* {error && <div> {error} </div>} */}
->>>>>>> Stashed changes
 			</form>
 		</div>
 	);
