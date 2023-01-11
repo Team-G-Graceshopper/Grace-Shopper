@@ -15,9 +15,10 @@ export const petsSlice = createSlice({
 	initialState: [],
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addCase(fetchPetsAsync.fulfilled, (state, action) => {
-			return action.payload;
-		});
+		builder
+			.addCase(fetchPetsAsync.fulfilled, (state, action) => {
+				return action.payload;
+			})
 	},
 });
 
