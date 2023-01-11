@@ -1,12 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { logout } from '../../app/store';
+import { logout, me } from '../../app/store';
 
 const Navbar = () => {
 	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const id = useSelector((state) => state.auth.me.id)
+	const test = useSelector((state) => state.auth.me)
 	const logoutAndRedirectHome = () => {
 		dispatch(logout());
 		navigate('/login');
@@ -19,9 +21,9 @@ const Navbar = () => {
 				{isLoggedIn ? (
 					<div>
 						{/* The navbar will show these links after you log in */}
-						<Link to='/home'>Home</Link>
+						<Link to='/home'>Home </Link>
 						<Link to='/pets'>Pets</Link>
-                        <Link to='/cart'>Cart</Link>
+            <Link to={`/cart/${test.cart.id}`}>Cart</Link>
 						<button type='button' onClick={logoutAndRedirectHome}>
 							Logout
 						</button>
