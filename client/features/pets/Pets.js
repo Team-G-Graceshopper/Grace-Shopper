@@ -11,21 +11,18 @@ const Pets = () => {
   const pets = useSelector(selectPets)
   const navigate = useNavigate()
   const test = useSelector((state) => state.auth.me)
-  console.log(test)
+
  
   const petClick = (id) => {
     navigate(`/pets/${id}`)
   }
 
-  const addCartButton = (id, name, breed, type, description, imageUrl, price, weight, cartId) => {
-    dispatch(updatePetAsync({id, name, breed, type ,description, imageUrl, price, weight, cartId}))
+  const addCartButton = (id, name, breed, type, description, imageUrl, price, weight, userId) => {
+    dispatch(updatePetAsync({id, name, breed, type ,description, imageUrl, price, weight, userId}))
   }
  
   useEffect(() => {
     dispatch(fetchPetsAsync())
-    if(!test.cart){
-      dispatch(addCartAsync(test.id))
-    }
   }, [dispatch])
 
 
@@ -35,7 +32,7 @@ return (
     {pets.map((pet) => {
       return <div className="pets"> 
       <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p> <p>{pet.breed} </p>
-      <button className="addCart" onClick={() => addCartButton(pet.id, pet.name, pet.breed, pet.type, pet.description, pet.imageUrl, pet.price, pet.weight, test.cart.id)}>Add to Cart</button>
+      <button className="addCart" onClick={() => addCartButton(pet.id, pet.name, pet.breed, pet.type, pet.description, pet.imageUrl, pet.price, pet.weight, test.id)}>Add to Cart</button>
       </div>
     })}
     </div>

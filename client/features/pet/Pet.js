@@ -14,21 +14,24 @@ const Pet = () => {
     dispatch(fetchPetAsync(Id))
   }, [dispatch])
 
+  useEffect(() => {
+    if (pet.name) {
+      setP(pet)
+    }
+  }, [pet])
 
   return(
     <>
-    {pet ? 
       <div className="singlePet">
         <ul>
-          <li>{pet.name}</li>
-          <li>${pet.price}</li>
-          <li>{pet.breed}</li>
-          <li>{pet.weight}</li>
-          <li>{pet.description}</li>
-          <img src={pet.imageUrl} />
+          <li>{p.name}</li>
+          <li>${p.price}</li>
+          <li>{p.breed}</li>
+          <li>{p.weight}</li>
+          <li>{p.description}</li>
+          <img src={p.imageUrl} />
         </ul>
-      </div> : <p>no pet</p>
-      }
+      </div> 
     </>
   )
 

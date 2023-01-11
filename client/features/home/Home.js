@@ -1,5 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCartAsync } from '../cart/cartSlice';
 import Pets from '../pets/Pets';
 
 /**
@@ -7,6 +8,7 @@ import Pets from '../pets/Pets';
  */
 const Home = (props) => {
 	const username = useSelector((state) => state.auth.me.username);
+
 
 	return (
 		<div>

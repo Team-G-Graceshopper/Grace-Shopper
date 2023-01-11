@@ -2,7 +2,7 @@
 
 const {
 	db,
-	models: { User, Pet, Cart },
+	models: { User, Pet },
 } = require('../server/db');
 
 const { faker } = require('@faker-js/faker');
@@ -56,11 +56,7 @@ async function seed() {
 	// 		murphy: users[1],
 	// 	},
 	// };
-	for (let i = 0; i < 10; i++) {
-	await Cart.create({
-		userId: i+1
-	})
-}
+
 }
 
 /*
