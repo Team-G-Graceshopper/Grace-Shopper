@@ -55,7 +55,7 @@ async function seed() {
 			name: faker.name.firstName(),
 			breed: breed,
             type: type,
-            description: faker.commerce.productDescription(),
+            description: faker.lorem.lines(),
 			imageUrl: imageUrl,
 			price: faker.datatype.number({ min: 200, max: 1000 }),
 			weight: faker.datatype.number({ min: 5, max: 25 }),

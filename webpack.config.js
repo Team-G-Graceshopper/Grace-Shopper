@@ -16,6 +16,13 @@ module.exports = {
 					presets: ['@babel/preset-env', '@babel/preset-react'],
 				},
 			},
+<<<<<<< Updated upstream
+=======
+			{
+				test: /\.css$/,
+				use: ['style-loader', 'css-loader'],
+			},
+>>>>>>> Stashed changes
 		],
 	},
 };

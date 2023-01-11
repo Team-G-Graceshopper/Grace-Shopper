@@ -2,6 +2,10 @@ import React from 'react';
 
 import Navbar from '../features/navbar/Navbar';
 import AppRoutes from './AppRoutes';
+<<<<<<< Updated upstream
+=======
+import '../main.css';
+>>>>>>> Stashed changes
 
 const App = () => {
 	return (
