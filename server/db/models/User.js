@@ -20,13 +20,14 @@ const User = db.define('user', {
  * instanceMethods
  */
 User.prototype.correctPassword = function (candidatePwd) {
-	//we need to compare the plain version to an encrypted version of the password
 	return bcrypt.compare(candidatePwd, this.password);
 };
+// 'User.prototype.correctPassword' - function that compares a given password with the password of the user instance / compare the plain version to an encrypted version of the password
 
 User.prototype.generateToken = function () {
 	return jwt.sign({ id: this.id }, process.env.JWT);
 };
+// 'User.prototype.generateToken' - function that generates a JWT token with the user's id
 
 /**
  * classMethods
@@ -40,6 +41,7 @@ User.authenticate = async function ({ username, password }) {
 	}
 	return user.generateToken();
 };
+// 'User.authenticate' - class method that finds a user by username and compares the provided password with the stored password, if correct returns a token
 
 User.findByToken = async function (token) {
 	try {
@@ -50,10 +52,10 @@ User.findByToken = async function (token) {
 		}
 		return user;
 	} catch (err) {
-		// throw new Error('Invalid token'); // THIS IS CAUSING BAD TOKEN ERROR
-        return err;
+		return err;
 	}
 };
+// 'User.findByToken' - class method that finds a user by the given token
 
 /**
  * hooks
@@ -64,6 +66,8 @@ const hashPassword = async (user) => {
 		user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
 	}
 };
+// 'hashPassword' - hook function that encrypts the user's password using bcrypt before creating/updating user instances. This is added to the User model via 'User.beforeCreate', 'User.beforeUpdate', User.beforeBulkCreate'.
+// Uses 'bcrypt' and 'jsonwebtoken' to hash and verify the token respectively
 
 User.beforeCreate(hashPassword);
 User.beforeUpdate(hashPassword);
