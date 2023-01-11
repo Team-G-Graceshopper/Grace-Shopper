@@ -19,6 +19,11 @@
   margin: 1rem;
 }
 
+.pets:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
+
 .petsContainer{
   display: flex;
   flex-direction: row;

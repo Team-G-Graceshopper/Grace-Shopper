@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import { fetchPetAsync, selectPet } from "./petSlice";
 
 const Pet = () => {
-  const [p, setP] = useState([])
   const dispatch = useDispatch()
   const pet = useSelector(selectPet)
   const { Id } = useParams()
@@ -15,24 +14,21 @@ const Pet = () => {
     dispatch(fetchPetAsync(Id))
   }, [dispatch])
 
-  useEffect(() => {
-    if (pet.name) {
-      setP(pet)
-    }
-  }, [pet])
 
   return(
     <>
+    {pet ? 
       <div className="singlePet">
         <ul>
-          <li>{p.name}</li>
-          <li>${p.price}</li>
-          <li>{p.breed}</li>
-          <li>{p.weight}</li>
-          <li>{p.description}</li>
-          <img src={p.imageUrl} />
+          <li>{pet.name}</li>
+          <li>${pet.price}</li>
+          <li>{pet.breed}</li>
+          <li>{pet.weight}</li>
+          <li>{pet.description}</li>
+          <img src={pet.imageUrl} />
         </ul>
-      </div> 
+      </div> : <p>no pet</p>
+      }
     </>
   )
 
