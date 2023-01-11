@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { fetchPetsAsync, selectPets } from './petsSlice';
 import { addCartAsync } from '../cart/cartSlice';
 import { updatePetAsync } from '../pet/petSlice';
+import { addCartAsync } from '../cart/cartSlice';
+import { updatePetAsync } from '../pet/petSlice';
 
 const Pets = () => {
 	const dispatch = useDispatch();
@@ -46,6 +48,9 @@ const Pets = () => {
 
 	useEffect(() => {
 		dispatch(fetchPetsAsync());
+		if (!user.cart) {
+			dispatch(addCartAsync(user.id));
+		}
 	}, [dispatch, test]);
 
 	return (
