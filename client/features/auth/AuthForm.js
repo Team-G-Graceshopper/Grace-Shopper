@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { authenticate } from '../../app/store';
+import { addCartAsync } from '../cart/cartSlice';
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -9,7 +11,7 @@ import { authenticate } from '../../app/store';
 **/
 
 const AuthForm = ({ name, displayName }) => {
-	const { error } = useSelector((state) => state.auth);
+
 	const dispatch = useDispatch();
 
 	const handleSubmit = (evt) => {
@@ -38,7 +40,6 @@ const AuthForm = ({ name, displayName }) => {
         <div>
           <button type="submit">{displayName}</button>
         </div>
-        {/* {error && <div> {error} </div>} */}
       </form>
     </div>
   );

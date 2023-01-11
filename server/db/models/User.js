@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const Pet = require('./Pet');
 
 const SALT_ROUNDS = 5;
 
@@ -44,7 +45,7 @@ User.authenticate = async function ({ username, password }) {
 User.findByToken = async function (token) {
 	try {
 		const { id } = await jwt.verify(token, process.env.JWT);
-		const user = await User.findByPk(id);
+		const user = await User.findByPk(id, {include: Pet});
 		if (!user) {
 			throw new Error('User not found');
 		}

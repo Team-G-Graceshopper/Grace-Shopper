@@ -33,7 +33,7 @@ async function seed() {
 			name: faker.name.firstName(),
 			breed: breed,
             type: type,
-            description: faker.commerce.productDescription(),
+            description: faker.lorem.lines(),
 			imageUrl: imageUrl,
 			price: faker.datatype.number({ min: 200, max: 1000 }),
 			weight: faker.datatype.number({ min: 5, max: 25 }),
@@ -56,6 +56,7 @@ async function seed() {
 	// 		murphy: users[1],
 	// 	},
 	// };
+
 }
 
 /*
@@ -66,6 +67,7 @@ The `seed` function is concerned only with modifying the database.
 async function runSeed() {
 	console.log('seeding...');
 	try {
+		await db.sync({force: true})
 		await seed();
 	} catch (err) {
 		console.error(err);
@@ -76,6 +78,8 @@ async function runSeed() {
 		console.log('db connection closed');
 	}
 }
+
+
 
 /*
 Execute the `seed` function, IF we ran this module directly (`node seed`).

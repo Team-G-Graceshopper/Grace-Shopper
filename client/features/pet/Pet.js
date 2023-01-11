@@ -17,7 +17,6 @@ const Pet = () => {
 
   return(
     <>
-    {pet ? 
       <div className="singlePet">
         <ul>
           <li>{pet.name}</li>
@@ -27,8 +26,7 @@ const Pet = () => {
           <li>{pet.description}</li>
           <img src={pet.imageUrl} />
         </ul>
-      </div> : <p>no pet</p>
-      }
+      </div> 
     </>
   )
 

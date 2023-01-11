@@ -4,11 +4,12 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../../app/store';
 import styled from "styled-components";
 
-
 const Navbar = () => {
 	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const id = useSelector((state) => state.auth.me.id)
+	const test = useSelector((state) => state.auth.me)
 	const logoutAndRedirectHome = () => {
 		dispatch(logout());
 		navigate('/login');
