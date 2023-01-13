@@ -56,6 +56,7 @@ const Pets = () => {
                         return (
                             <div key={pet.id} className='pets'>
                                 <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p>{' '}
+                                <img src={pet.imageUrl}/>
                                 <p>{pet.breed} </p>
                                 <button
                                     className='addCart'
