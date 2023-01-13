@@ -17,8 +17,8 @@ const Pets = () => {
     navigate(`/pets/${id}`)
   }
 
-  const addCartButton = (id, name, breed, type, description, imageUrl, price, weight, userId) => {
-    dispatch(updatePetAsync({id, name, breed, type ,description, imageUrl, price, weight, userId}))
+  const addCartButton = (id, userId) => {
+    dispatch(updatePetAsync({id, userId}))
   }
  
   useEffect(() => {
@@ -32,7 +32,7 @@ return (
     {pets.map((pet) => {
       return <div className="pets"> 
       <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p> <p>{pet.breed} </p>
-      <button className="addCart" onClick={() => addCartButton(pet.id, pet.name, pet.breed, pet.type, pet.description, pet.imageUrl, pet.price, pet.weight, test.id)}>Add to Cart</button>
+      <button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</button>
       </div>
     })}
     </div>

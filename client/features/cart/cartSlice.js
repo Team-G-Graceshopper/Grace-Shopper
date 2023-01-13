@@ -10,6 +10,8 @@ export const fetchUserAsync = createAsyncThunk('fetchAUser', async (id) => {
   }
 })
 
+
+
 export const cartSlice = createSlice({
   name: 'cart',
   initialState: [],
@@ -18,6 +20,7 @@ export const cartSlice = createSlice({
     builder.addCase(fetchUserAsync.fulfilled, (state, action) => {
       return action.payload
     })
+
   })
 })
 

@@ -10,7 +10,7 @@ export const fetchPetAsync = createAsyncThunk('fetachAPet', async (id) => {
   }
 })
 
-export const updatePetAsync = createAsyncThunk('updateAPet', async ({id, name, breed, type, description, imageUrl, price, weight, userId}) => {
+export const updatePetAsync = createAsyncThunk('updateAPet', async ({id, name, breed, type, description, imageUrl, price, weight, quantity, userId}) => {
   try{
     const {data} = await axios.put(`/api/pets/${id}`, {
       name,
@@ -20,6 +20,7 @@ export const updatePetAsync = createAsyncThunk('updateAPet', async ({id, name, b
       imageUrl,
       price,
       weight,
+      quantity,
       userId
     })
     return data
