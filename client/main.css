@@ -1,33 +1,98 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
-.pets{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  border: 1px solid black;
-  padding: 1rem;
-  width: 15vw;
-  height: 17vh;
-  overflow: scroll;
-  margin: 1rem;
+body {
+	font-family: verdana;
+	height: 400px;
+	background-image: url(../public/backdrop.png);
+	
+
 }
 
-.pets:hover{
-  background-color: lightgray;
-  cursor: pointer;
+.pets {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border: 1px solid black;
+	padding: 1rem;
+	width: 15vw;
+	height: 17vh;
+	overflow: scroll;
+	margin: 1rem;
 }
 
-.petsContainer{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+.pets:hover {
+	background-color: lightgray;
+	cursor: pointer;
 }
+
+.petsContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.upperBar {
+	display: flex;
+	background-color: rgb(5, 55, 69);
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	height: 30px;
+}
+
+.upperBarMessage {
+	color: white;
+	font-size: 10pt;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main_header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(135, 138, 139);
+	height: 140px;
+	border: none;
+	margin: 0;
+}
+
+.main_header h1 {
+	font-family: 'Bee Honey', sans-serif;;
+	font-size: 60pt;
+	color: skyblue;
+	text-align: center;
+	height: 50%;
+}
+
+.navbar {
+	background-color: rgb(236, 191, 136);
+	height: 50x;
+	outline: 1px solid;
+	outline-color: rgb(219, 219, 219);
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	
+}
+
+.navbar a {
+	font-family: 'Dogfish', sans-serif;
+	text-decoration: none;
+	color: rgb(54, 54, 54)
+
+  }
+
+  nav {
+	display: flex;
+	justify-content: space-around;
+  }
+  

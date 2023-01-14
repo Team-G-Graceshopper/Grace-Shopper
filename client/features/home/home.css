@@ -1,0 +1,22 @@
+
+
+.slideshow {
+   
+    width: 100vw;
+    position: relative;
+  }
+  
+  .container {
+    width: 100vw;
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  
+  img {
+    width: 100vw; /*fill view point across*/
+    height: auto;
+  }
+  
+  
+  
