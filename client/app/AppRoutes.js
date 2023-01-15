@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import Accessories from '../features/accesories/Accessories';
 import AuthForm from '../features/auth/AuthForm';
 import Cart from '../features/cart/Cart';
 import Home from '../features/home/Home';
@@ -29,6 +30,7 @@ const AppRoutes = () => {
 					<Route path='/pets' element={<Pets />} />
 					<Route path='/pets/:Id' element={<Pet />} />
 					<Route path='/cart' element={<Cart />} />
+					<Route path='/accessories' element={<Accessories />} />
 				</Routes>
 			) : (
 				<Routes>

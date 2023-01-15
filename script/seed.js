@@ -2,7 +2,7 @@
 
 const {
 	db,
-	models: { User, Pet },
+	models: { User, Pet, Accessorie },
 } = require('../server/db');
 
 const { faker } = require('@faker-js/faker');
@@ -40,10 +40,19 @@ async function seed() {
 		});
 	}
 
+	const fakeAccessories = []
+	for (let i = 0; i < 10; i++){
+		fakeAccessories.push({
+			name: faker.commerce.productName(),
+			description: faker.commerce.productDescription()
+		})
+	}
+
 	// use Promise.all to create User, Dog, and Cat models
 	const [users, pets] = await Promise.all([
 		User.bulkCreate(fakeUsers),
 		Pet.bulkCreate(fakePets),
+		Accessorie.bulkCreate(fakeAccessories)
 	]);
 
 	console.log(

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-	models: { User, Pet },
+	models: { User, Pet, Accessorie },
 } = require('../db');
 
 router
@@ -17,7 +17,7 @@ router
 	})
 	.post(async (req, res, next) => {
 		try {
-			const user = await User.create(req.body);
+			const user = await User.create(req.body);	
 			res.status(201).send(user);
 		} catch (err) {
 			next(err);
@@ -28,7 +28,11 @@ router
 	.route('/:id')
 	.get(async (req, res, next) => {
 		try {
-			const user = await User.findByPk(req.params.id, {include: Pet});
+			const user = await User.findByPk(req.params.id,
+				 {include: [ 
+					{model: Pet},
+					{model: Accessorie}
+				]});
 			if (!user) {
 				res.status(404).send({ message: 'User not found' });
 				return;

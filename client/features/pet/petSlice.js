@@ -10,36 +10,24 @@ export const fetchPetAsync = createAsyncThunk('fetachAPet', async (id) => {
 	}
 });
 
-export const updatePetAsync = createAsyncThunk(
-	'updateAPet',
-	async ({
-		id,
-		name,
-		breed,
-		type,
-		description,
-		imageUrl,
-		price,
-		weight,
-		userId,
-	}) => {
-		try {
-			const { data } = await axios.put(`/api/pets/${id}`, {
-				name,
-				breed,
-				type,
-				description,
-				imageUrl,
-				price,
-				weight,
-				userId,
-			});
-			return data;
-		} catch (err) {
-			console.log(err);
-		}
-	}
-);
+export const updatePetAsync = createAsyncThunk('updateAPet', async ({id, name, breed, type, description, imageUrl, price, weight, quantity, userId}) => {
+  try{
+    const {data} = await axios.put(`/api/pets/${id}`, {
+      name,
+      breed,
+      type,
+      description,
+      imageUrl,
+      price,
+      weight,
+      quantity,
+      userId
+    })
+    return data
+  }catch(err){
+    console.log(err)
+  }
+})
 
 export const petSlice = createSlice({
 	name: 'pet',

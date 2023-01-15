@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { authenticate } from '../../app/store';
 import  LoginMessage  from "../loginmessage/LoginMessage"
-
+import { Button } from '@mui/material'
 
 
 /**
@@ -38,7 +38,7 @@ const AuthForm = ({ name, displayName }) => {
 					<input name='password' type='password' />
 				</div>
 				<div>
-					<button type='submit'>{displayName}</button>
+					<Button type='submit'>{displayName}</Button>
 					
 				</div>
 				<LoginMessage />

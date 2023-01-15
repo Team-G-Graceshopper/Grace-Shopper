@@ -16,73 +16,27 @@ const Pets = () => {
         navigate(`/pets/${id}`);
     };
 
-    const addCartButton = async (
-        id,
-        name,
-        breed,
-        type,
-        description,
-        imageUrl,
-        price,
-        weight,
-        userId
-    ) => {
-        await dispatch(
-            updatePetAsync({
-                id,
-                name,
-                breed,
-                type,
-                description,
-                imageUrl,
-                price,
-                weight,
-                userId,
-            })
-        );
-        setTest(!test);
-    };
-
-    useEffect(() => {
-        dispatch(fetchPetsAsync());
-    }, [dispatch, test]);
-
-    return (
-        <>
-            <div className='petsContainer'>
-                {pets.map((pet) => {
-                    if (!pet.userId) {
-                        return (
-                            <div key={pet.id} className='pets'>
-                                <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p>{' '}
-                                <p>{pet.breed} </p>
-                                <Button
-                                    className='addCart'
-                                    onClick={() =>
-                                        addCartButton(
-                                            pet.id,
-                                            pet.name,
-                                            pet.breed,
-                                            pet.type,
-                                            pet.description,
-                                            pet.imageUrl,
-                                            pet.price,
-                                            pet.weight,
-                                            user.id
-                                        )
-                                    }>
-                                    Add to Cart
-                                </Button>
-                            </div>
-                        );
-                    }
-                    return null;
-                })}
-            </div>
-        </>
-    );
-};
+  const addCartButton = (id, userId) => {
+    dispatch(updatePetAsync({id, userId}))
+  }
+ 
+  useEffect(() => {
+    dispatch(fetchPetsAsync())
+  }, [dispatch])
 
 
-
+return (
+  <>
+  <div className="petsContainer">
+    {pets.map((pet) => {
+      return <div className="pets"> 
+      <img className="product-image" src={pet.imageUrl} />  
+      <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p> <p>{pet.breed} </p>
+      <Button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</Button>
+      </div>
+    })}
+    </div>
+  </>
+)
+}
 export default Pets;
