@@ -6,25 +6,25 @@ import { updatePetAsync } from '../pet/petSlice';
 import { Button } from '@mui/material'
 
 const Pets = () => {
-    const dispatch = useDispatch();
-    const pets = useSelector(selectPets);
-    const navigate = useNavigate();
-    const user = useSelector((state) => state.auth.me);
-    const [test, setTest] = useState(false);
-    const [setState, setNewState] = useState("none")
+  const dispatch = useDispatch();
+  const pets = useSelector(selectPets);
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.me);
+  const [test, setTest] = useState(false);
+  const [setState, setNewState] = useState("none")
 
-    const petClick = (id) => {
-        navigate(`/pets/${id}`);
-    };
+  const petClick = (id) => {
+    navigate(`/pets/${id}`);
+  };
 
   const addCartButton = (id, userId) => {
-    dispatch(updatePetAsync({id, userId}))
+    dispatch(updatePetAsync({ id, userId }))
   }
 
   const sortMethod = {
-    name: { method: (a, b) => a.name.localeCompare(b.name)}
-	}
- 
+    name: { method: (a, b) => a.name.localeCompare(b.name) }
+  }
+
   useEffect(() => {
     dispatch(fetchPetsAsync())
   }, [dispatch])
@@ -34,24 +34,26 @@ const Pets = () => {
     setNewState(e.target.value)
   }
 
-return (
-  <>
-  <select defaultValue={'DEFAULT'} onChange={handleSort}>
-       <option value="name">Name</option>
-                
-                
-            </select>
-  
-  <div className="petsContainer">
-    {pets.map((pet) => {
-      return <div className="pets"> 
-      <img className="product-image" src={pet.imageUrl} />  
-      <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p> <p>{pet.breed} </p>
-      <Button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</Button>
+  return (
+    <>
+      <select defaultValue={'DEFAULT'} onChange={handleSort}>
+        <option value="name">Name</option>
+
+
+      </select>
+
+      <div className="petsContainer">
+        {pets.map((pet) => {
+          return <div className="pets"
+            key={pet.id}>
+
+            <img className="product-image" src={pet.imageUrl} />
+            <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p> <p>{pet.breed} </p>
+            <Button variant="contained" className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</Button>
+          </div>
+        })}
       </div>
-    })}
-    </div>
-  </>
-)
+    </>
+  )
 }
 export default Pets;

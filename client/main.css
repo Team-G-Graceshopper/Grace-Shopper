@@ -32,6 +32,8 @@ body {
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 1rem;
+	text-align: center;
+	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 .upperBar {
@@ -99,3 +101,25 @@ body {
 	border-radius: 0.6rem 0.6rem 0 0;
 	object-fit: cover;
   }
+.single-product-image {
+	margin-left: auto;
+	display: flex;
+	margin-right: auto;
+	width: 500px;
+	height: 500px;
+	border-radius: 0.6rem 0.6rem 0 0;
+	object-fit: cover;
+}
+
+.petsContainerSingle {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	text-align: center;
+	font-family: Dogfish;
+	font-size: 20pt;
+	color: rgb(139, 6, 6);
+}
+

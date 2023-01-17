@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPetAsync, selectPet } from './petSlice';
+import { Button } from '@mui/material'
+
 
 const Pet = () => {
 	const dispatch = useDispatch();
@@ -17,20 +19,18 @@ const Pet = () => {
 
 	return (
 		<>
-		<select defaultValue={'DEFAULT'} onChange={handleSort}>
-        <option value="DEFAULT" disabled>None</option>
-        <option value="leastToGreatest">Least to Greatest</option>
-        <option value="greatestToLeast">Greatest to Least</option>
-      </select>
+			<div className="petsContainerSingle">
 			<div className='singlePet'>
 				<ul>
-					<img src={pet.imageUrl} />
+					<img className="single-product-image" src={pet.imageUrl} />
 					<li>{pet.name}</li>
 					<li>${pet.price}</li>
 					<li>{pet.breed}</li>
 					<li>{pet.weight}</li>
 					<li>{pet.description}</li>
 				</ul>
+				<Button variant="contained" size="large" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</Button>
+			</div>
 			</div>
 		</>
 	);
