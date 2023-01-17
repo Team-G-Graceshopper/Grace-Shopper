@@ -31,6 +31,7 @@ return (
   <div className="petsContainer">
     {pets.map((pet) => {
       return <div className="pets"> 
+      <img className="petImg" src={pet.imageUrl} />
       <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p> <p>{pet.breed} </p>
       <button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</button>
       </div>
