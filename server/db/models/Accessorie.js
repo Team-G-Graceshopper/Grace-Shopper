@@ -10,6 +10,10 @@ const Accessorie = db.define('accessorie', {
         type: Sequelize.TEXT,
         allowNull: false,
     },
+    imageUrl: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+    },
 });
 
 module.exports = Accessorie

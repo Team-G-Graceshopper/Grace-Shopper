@@ -1,5 +1,5 @@
 'use strict';
-
+const {dogArray, catArray, petAcessArray} = require('./imageUrl')
 const {
 	db,
 	models: { User, Pet, Accessorie },
@@ -26,9 +26,10 @@ async function seed() {
     
 	const fakePets = [];
 	for (let i = 0; i < 50; i++) {
-        let type = Math.random() < .5 ? 'cat' : 'dog';
+        let type = Math.random() < .5 ? 'cat' : 'dog' ;
         let breed = type === 'cat' ? faker.animal.cat() : faker.animal.dog();
-        let imageUrl = faker.image.imageUrl(250, 250, type);
+        let imageUrl = type === 'cat' ? catArray[Math.floor(Math.random()*100)] : dogArray[Math.floor(Math.random()*100)];
+		
 		fakePets.push({
 			name: faker.name.firstName(),
 			breed: breed,
@@ -41,11 +42,13 @@ async function seed() {
 	}
 
 	const fakeAccessories = []
-	for (let i = 0; i < 10; i++){
+	for (let i = 0; i < 40; i++){
+		let accessImage = petAcessArray[Math.floor(Math.random()*100)];
 		fakeAccessories.push({
 			name: faker.commerce.productName(),
-			description: faker.commerce.productDescription()
-		})
+			description: faker.commerce.productDescription(),
+			imageUrl: accessImage,
+		});
 	}
 
 	// use Promise.all to create User, Dog, and Cat models

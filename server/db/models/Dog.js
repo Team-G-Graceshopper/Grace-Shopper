@@ -20,7 +20,7 @@ const Dog = db.define('dog', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: true
   }
 })
 

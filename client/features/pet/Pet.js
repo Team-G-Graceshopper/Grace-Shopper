@@ -13,8 +13,15 @@ const Pet = () => {
 		dispatch(fetchPetAsync(Id));
 	}, [dispatch]);
 
+	
+
 	return (
 		<>
+		<select defaultValue={'DEFAULT'} onChange={handleSort}>
+        <option value="DEFAULT" disabled>None</option>
+        <option value="leastToGreatest">Least to Greatest</option>
+        <option value="greatestToLeast">Greatest to Least</option>
+      </select>
 			<div className='singlePet'>
 				<ul>
 					<img src={pet.imageUrl} />
