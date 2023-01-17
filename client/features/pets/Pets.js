@@ -36,7 +36,7 @@ const Pets = () => {
 
 return (
   <>
-    <select defaultValue={'DEFAULT'} onChange={handleSort}>
+  <select defaultValue={'DEFAULT'} onChange={handleSort}>
        <option value="name">Name</option>
                 
                 
@@ -45,7 +45,7 @@ return (
   <div className="petsContainer">
     {pets.map((pet) => {
       return <div className="pets"> 
-      <img className="product-image" src={accessorie.imageUrl} />  
+      <img className="product-image" src={pet.imageUrl} />  
       <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p> <p>{pet.breed} </p>
       <Button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</Button>
       </div>
