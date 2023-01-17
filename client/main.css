@@ -35,3 +35,9 @@
 .petImg {
   width: 3vw
 }
+
+.adminMenu{
+	display: flex;
+	flex-direction: column;
+	width: 30vw;
+}

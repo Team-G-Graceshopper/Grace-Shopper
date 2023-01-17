@@ -6,6 +6,10 @@ const Accessorie = db.define('accessorie', {
 		type: Sequelize.STRING,
 		allowNull: false,
 	},
+    price: {
+        type: Sequelize.FLOAT,
+        allowNull: false
+    },
     description: {
         type: Sequelize.TEXT,
         allowNull: false,

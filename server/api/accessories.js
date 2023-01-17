@@ -18,6 +18,14 @@ router
 
 router
 	.route('/:id')
+  .delete(async (req, res, next) => {
+    try{
+      const accesorie = await Accessorie.findByPk(req.params.id)
+      res.send(await accesorie.destroy())
+    }catch(err){
+      next(err)
+    }
+  })
 	.get(async (req, res, next) => {
 		try {
 			const accessorie = await Accessorie.findByPk(req.params.id);

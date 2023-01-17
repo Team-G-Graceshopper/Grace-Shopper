@@ -44,6 +44,7 @@ async function seed() {
 	for (let i = 0; i < 10; i++){
 		fakeAccessories.push({
 			name: faker.commerce.productName(),
+			price: faker.datatype.number({ min: 200, max: 1000 }),
 			description: faker.commerce.productDescription()
 		})
 	}

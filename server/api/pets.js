@@ -24,6 +24,14 @@ router
 
 router
 	.route('/:id')
+	.delete(async (req, res, next) => {
+		try{
+			const pet = await Pet.findByPk(req.params.id)
+			res.send(await pet.destroy())
+		}catch(err){
+		next(err)
+		}
+	})
 	.get(async (req, res, next) => {
 		try {
 			const pet = await Pet.findByPk(req.params.id);
@@ -44,5 +52,6 @@ router
 		}
 		res.send(await pet.update(req.body));
 	});
+
 
 module.exports = router;

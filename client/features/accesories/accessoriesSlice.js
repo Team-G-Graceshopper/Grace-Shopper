@@ -10,10 +10,10 @@ export const fetchAccessoriesAsync = createAsyncThunk('fetchAllAccessories', asy
   }
 })
 
-export const updateAccessorieAsync = createAsyncThunk('updateAccessorie', async ({id, quantity}) => {
+export const updateAccessorieAsync = createAsyncThunk('updateAccessorie', async ({id, name, description}) => {
   try{
     const { data } = await axios.put(`/api/accessories/${id}`, {
-      quantity
+      name, description
     })
     return data
   }catch (err){
@@ -67,6 +67,15 @@ export const fetchAccessorieQuantityAsync = createAsyncThunk('fetchQuantity', as
     })
     return data
   }catch (err){
+    console.log(err)
+  }
+})
+
+export const destoryAccessorieAsync = createAsyncThunk('deleteAccessorie', async (id) => {
+  try{
+    const { data } = await axios.delete(`/api/accessories/${id}`)
+    return data
+  }catch(err){
     console.log(err)
   }
 })
