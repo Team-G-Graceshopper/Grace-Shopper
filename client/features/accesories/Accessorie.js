@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchAccessorieAsync, selectAccessorie, addAccessorieAsync} from "./accessorieSlice";
-import { updateAccessorieAsync } from "./accessoriesSlice";
+import { fetchAccessorieAsync, selectAccessorie} from "./accessorieSlice";
+
+import { addAccessorieAsync, fetchAccessoriesAsync, selectAccessories, updateAccessorieAsync } from "./accessoriesSlice";
 import { Button } from '@mui/material'
 
 
@@ -18,8 +19,8 @@ const Accessorie = () => {
 
 
 
-  const addCartClick = (id, userId) => {
-    dispatch(updateAccessorieAsync({ id, userId }))
+  const addCartClick = (id, userId, accessorieId) => {
+    dispatch(addAccessorieAsync({ id, userId, accessorieId }))
   }
 
   const deleteButton = async (id) => {
@@ -54,7 +55,7 @@ const Accessorie = () => {
     <li>{accessorie.price}</li>
     <li>{accessorie.description}</li>
     </ul>
-    <Button variant="contained" size="large" onClick={() => addCartClick(accessorie.id, test.id)}>Add to Cart</Button>
+    <Button variant="contained" size="large" onClick={() => addCartClick(accessorie.id, test.id, accessorie.id)}>Add to Cart</Button>
      
     </div>
     </div>
