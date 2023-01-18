@@ -17,7 +17,19 @@ const Pet = () => {
   const pet = useSelector(selectPet)
   const { Id } = useParams()
   const test = useSelector((state) => state.auth.me)
+  
+  const petClick = (id) => {
+    navigate(`/pets/${id}`);
+  };
 
+  const addCartButton = (id, userId) => {
+    dispatch(updatePetAsync({ id, userId }))
+  }
+
+  const deleteButton = async (id) => {
+    await dispatch(destroyPetAsync(id))
+    setRender(!render)
+  }
 
 
   const formSubmit = async (e) => {

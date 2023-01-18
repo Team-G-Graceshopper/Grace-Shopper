@@ -13,6 +13,9 @@ const Accessories = () => {
   const accessories = useSelector(selectAccessories)
   const test = useSelector((state) => state.auth.me)
 
+  const accessorieClick = (id) => {
+    navigate(`/accessories/${id}`);
+  };
 
   const deleteButton = async (id) => {
     await dispatch(destoryAccessorieAsync(id))
@@ -31,16 +34,16 @@ const Accessories = () => {
   return (
     <>
       <div className="petsContainer">
-        {accessories.map((pet) => {
+        {accessories.map((accessorie) => {
           return (
             
             <div className="pets">
-            <img className="product-image" src={pet.imageUrl} />
-            <Link to={`/accessories/${pet.id}`}>{pet.name}</Link>
-            <p>{pet.price}</p>
-            <Button className="addCart" onClick={() => addCartClick(pet.id, test.id, pet.id)}>Add to Cart</Button>
+            <img className="product-image" src={accessorie.imageUrl} />
+            <Link to={`/accessories/${accessorie.id}`}>{accessorie.name}</Link>
+            <p>{accessorie.price}</p>
+            <Button className="addCart" onClick={() => addCartClick(accessorie.id, test.id, accessorie.id)}>Add to Cart</Button>
             {test.privledge == 'admin' ? 
-            <button onClick={() => {deleteButton(pet.id)}}>Delete</button>
+            <button onClick={() => {deleteButton(accessorie.id)}}>Delete</button>
             : null }
           </div>
           )
