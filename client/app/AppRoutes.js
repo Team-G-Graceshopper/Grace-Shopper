@@ -49,6 +49,15 @@ const AppRoutes = () => {
 						path='/signup'
 						element={<AuthForm name='signup' displayName='Sign Up' />}
 					/>
+					<Route path='/*' element={<Home />} />
+					<Route to='/home' element={<Home />} />
+					<Route path='/pets' element={<Pets />} />
+					<Route path='/pets/:Id' element={<Pet />} />
+					<Route path='/cart' element={<Cart />} />
+					<Route path='/accessories' element={<Accessories />} />
+					<Route path='/admin' element={<Admin />} />
+					<Route path='/accessories/:Id' element={<Accessorie />} />
+					<Route path='/users/:Id' element={<User />} />
 				</Routes>
 			)}
 		</div>

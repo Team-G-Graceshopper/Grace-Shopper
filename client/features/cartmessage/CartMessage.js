@@ -11,7 +11,7 @@ function CartMessage() {
 
   return (
     <div style={bannerStyle}>
-      <img 
+      <img className="cartImage"
       style={{maxWidth: "100%"}} 
         alt="Just a cart message"
         src="/wallpaper/cart.png"

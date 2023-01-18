@@ -12,6 +12,14 @@ const Accessories = () => {
   const dispatch = useDispatch()
   const accessories = useSelector(selectAccessories)
   const test = useSelector((state) => state.auth.me)
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+
+
+  let accCartArr = []
+  const addCartNoUser = (accObj) => {
+    accCartArr.push(accObj)
+    localStorage.setItem("accCart", JSON.stringify(accCartArr))
+  }
 
 
   const deleteButton = async (id) => {
@@ -38,7 +46,7 @@ const Accessories = () => {
             <img className="product-image" src={pet.imageUrl} />
             <Link to={`/accessories/${pet.id}`}>{pet.name}</Link>
             <p>{pet.price}</p>
-            <Button className="addCart" onClick={() => addCartClick(pet.id, test.id, pet.id)}>Add to Cart</Button>
+            {isLoggedIn ? <Button className="addCart" onClick={() => addCartClick(pet.id, test.id, pet.id)}>Add to Cart</Button> : <Button className="addCart" onClick={() => addCartNoUser(pet)}>Add to Cart</Button> }
             {test.privledge == 'admin' ? 
             <button onClick={() => {deleteButton(pet.id)}}>Delete</button>
             : null }

@@ -12,6 +12,7 @@ const Pets = () => {
   const pets = useSelector(selectPets)
   const navigate = useNavigate()
   const test = useSelector((state) => state.auth.me)
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
   const petClick = (id) => {
     navigate(`/pets/${id}`);
@@ -19,6 +20,12 @@ const Pets = () => {
 
   const addCartButton = (id, userId) => {
     dispatch(updatePetAsync({ id, userId }))
+  }
+
+  let petCartArr = []
+  const addCartNoUser = (petObj) => {
+    petCartArr.push(petObj)
+    localStorage.setItem("petCart", JSON.stringify(petCartArr))
   }
 
   const deleteButton = async (id) => {
@@ -39,7 +46,8 @@ const Pets = () => {
         return <div className="pets"> 
         <img className="product-image" src={pet.imageUrl} />
         <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p> <p>{pet.breed} </p>
-        <button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</button>
+        {isLoggedIn ? <button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</button> : <button className="addCart" onClick={() => addCartNoUser(pet)}>Add to Cart</button>}
+     
         {test.privledge == 'admin' ? 
         <button onClick={() => {deleteButton(pet.id)}}>Delete</button>
         : null }

@@ -7,12 +7,19 @@ import { updatePetAsync } from "../pet/petSlice";
 import { removeAccessorieAsync, updateAccessorieAsync, updateAccessorieQuantityAsync } from "../accesories/accessoriesSlice";
 import { fetchCartAccessoriesAsync, selectCartAccessories } from "./cartAcessoriesSlice";
 import  CartMessage  from "../cartmessage/CartMessage"
+import { addOrderAsync, fetchOrdersAsync, selectOrders } from "./orderSlice";
 
 const Cart = () => {  
+  const [address, setAddress] = useState('')
+  const [petCart, setPetCart] = useState([])
+  const [accCart, setAccCart] = useState([])
   const dispatch = useDispatch()
   const test = useSelector((state => state.auth.me))
   const user = useSelector(selectUser)
   const [qty, setQty] = useState(false)
+  const or = useState(selectOrders)
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  
 
 
   const addQuantity = async (id, quantity, userId, accessorieId) => {
@@ -37,13 +44,40 @@ const Cart = () => {
     setQty(!qty)
   }
 
+  const formSubmit = async (e) => {
+    e.preventDefault()
+    let p = []
+    user.pets.map((pet) => {
+      p.push(pet.name)
+    })
+    let a = []
+    user.accessories.map((accessorie) => {
+      let ha = accessorie.name + accessorie.UserAccessories.quantity
+      a.push(ha)
+    })
+    dispatch(addOrderAsync({address, pets: p.join(', '), accessories: a.join(', '), userId: test.id}))
+  }
+
   useEffect(() => {
+    if(isLoggedIn){
     dispatch(fetchUserAsync(test.id))
     dispatch(fetchCartAccessoriesAsync(test.id))
+    dispatch(fetchOrdersAsync())
+    }else {
+      const petCartArr = JSON.parse(localStorage.getItem("petCart"));
+      const accCartArr = JSON.parse(localStorage.getItem('accCart'))
+      setPetCart(petCartArr)
+      setAccCart(accCartArr)
+    }
   }, [dispatch, qty])
+
+
+  console.log(petCart, accCart)
 
   return (
     <>
+    {isLoggedIn ? <div className="cartContainer">
+    <div className="cartItems">
     <h1>Pets</h1>
     {user.pets ? Object.entries(user.pets).sort((a,b) => {
     if(a[1].name < b[1].name){
@@ -68,8 +102,38 @@ const Cart = () => {
       </div>
     )
   }): null}
+  </div>
+
+  <form onSubmit={formSubmit}>
+    <label>Shipping Address:</label>
+    <input name="shippingAddress" value={address} onChange={(e) => setAddress(e.target.value)} />
+    <button type="submit">Order</button>
+  </form>
+  </div> : 
+  <div className="cartContainer">
+  <div className="cartItems">
+  <h1>Pets</h1>
+  {petCart.map((pet) => {
+    return(
+      <div className="cartPets">
+      <div>{pet.name}</div>
+      </div>
+    )
+  })}
+  <h1>Accessories</h1>
+  {accCart.map((accessorie) => {
+    return(
+      <div className="cartAccessories">
+      <div>{accessorie.name}</div>
+      </div>
+    )
+  })}
+  </div>
+  </div>
+  }
+
   <CartMessage />
-    </>
+  </>
   )
 
 }
