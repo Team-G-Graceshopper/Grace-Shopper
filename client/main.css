@@ -123,3 +123,10 @@ body {
 	color: rgb(139, 6, 6);
 }
 
+
+
+.adminMenu{
+	display: flex;
+	flex-direction: column;
+	width: 30vw;
+}

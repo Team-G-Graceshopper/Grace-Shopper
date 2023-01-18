@@ -17,7 +17,7 @@ const Navbar = () => {
 
 	return (
 		<div>
-			
+
 			<nav className="navbar">
 				{isLoggedIn ? (
 					<ul>
@@ -25,11 +25,14 @@ const Navbar = () => {
 						<Link to='/home'>Home </Link>
 						<Link to='/pets'>Pets</Link>
 						<Link to='/accessories'>Accessories</Link>
-        		<Link to={`/cart`}>Cart</Link> 
+						<Link to={`/cart`}>Cart</Link>
+						{test.privledge == 'admin' ? <Link to={'/admin'}>Admin</Link> : null}
 						<Button type='button' onClick={logoutAndRedirectHome}>
+
+
 							Logout
 						</Button>
-						
+
 					</ul>
 				) : (
 					<ul>

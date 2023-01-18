@@ -29,6 +29,15 @@ export const updatePetAsync = createAsyncThunk('updateAPet', async ({id, name, b
   }
 })
 
+export const destroyPetAsync = createAsyncThunk('deleteAPet', async (id) => {
+  try{
+    const {data} = await axios.delete(`/api/pets/${id}`)
+    return data
+  }catch(err){
+    console.log(err)
+  }
+})
+
 export const petSlice = createSlice({
 	name: 'pet',
 	initialState: [],

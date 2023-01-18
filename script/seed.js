@@ -48,7 +48,9 @@ async function seed() {
 			name: faker.commerce.productName(),
 			description: faker.commerce.productDescription(),
 			imageUrl: accessImage,
+			price: faker.datatype.number({ min: 200, max: 1000 }),
 		});
+		
 	}
 
 	// use Promise.all to create User, Dog, and Cat models
