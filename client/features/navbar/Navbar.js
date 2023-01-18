@@ -23,7 +23,10 @@ const Navbar = () => {
 						{/* The navbar will show these links after you log in */}
 						<Link to='/home'>Home </Link>
 						<Link to='/pets'>Pets</Link>
-						<Link to='/cart'>Cart</Link>
+						<Link to='/accessories'>Accessories</Link>
+        		        <Link to={`/cart`}>Cart</Link> 
+                        <Link to={'/UserProfile'}>Profile</Link>
+						{test.privledge == 'admin' ? <Link to={'/admin'}>Admin</Link>: null}
 						<button type='button' onClick={logoutAndRedirectHome}>
 							Logout
 						</button>
