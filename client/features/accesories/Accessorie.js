@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchAccessorieAsync, selectAccessorie } from "./accessorieSlice";
 import { updateAccessorieAsync } from "./accessoriesSlice";
+import { Button } from '@mui/material'
+
 
 const Accessorie = () => {
   const [name, setName] = useState('')
@@ -33,9 +35,17 @@ const Accessorie = () => {
 
   return (
     <>
-    <h3>{accessorie.name}</h3>
-    <p>{accessorie.price}</p>
-    <p>{accessorie.description}</p>
+    <div className="petsContainerSingle">
+    <div className='singlePet'>
+      
+    <img className="single-product-image" src={accessorie.imageUrl} />
+    <li>{accessorie.name}</li>
+    <li>{accessorie.price}</li>
+    <li>{accessorie.description}</li>
+    <Button variant="contained" size="large" onClick={() => addCartButton(accessorie.id, test.id)}>Add to Cart</Button>
+     
+    </div>
+    </div>
     {test.privledge == "admin" ? 
     <form onSubmit={formSubmit}>
       <label>Accessorie Name:</label>
@@ -48,4 +58,4 @@ const Accessorie = () => {
   )
 }
 
-export default Accessorie
+export default Accessorie;

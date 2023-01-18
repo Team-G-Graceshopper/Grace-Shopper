@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { fetchPetAsync, selectPet, updatePetAsync } from "./petSlice";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchPetAsync, selectPet, updatePetAsync } from './petSlice';
 import { Button } from '@mui/material'
 
+
 const Pet = () => {
-  const [name, setName] = useState('')
+	const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [breed, setBreed] = useState('')
   const [weight, setWeight] = useState('')
@@ -17,15 +18,19 @@ const Pet = () => {
   const { Id } = useParams()
   const test = useSelector((state) => state.auth.me)
 
+
+
   const formSubmit = async (e) => {
     e.preventDefault()
     await dispatch(updatePetAsync({id: Id, name, price, breed, weight, description}))
     setRender(render)
   }
 
-  useEffect(() => {
-    dispatch(fetchPetAsync(Id))
-  }, [dispatch, render])
+	useEffect(() => {
+		dispatch(fetchPetAsync(Id));
+	}, [dispatch, render]);
+
+
 
   useEffect(() => {
     if (pet.name){
@@ -37,21 +42,23 @@ const Pet = () => {
     }
   }, [pet])
 
- 
+	
 
-  return(
-    <>
-      <div className="singlePet">
-        <ul>
-          <li>{pet.name}</li>
-          <li>${pet.price}</li>
-          <li>{pet.breed}</li>
-          <li>{pet.weight}</li>
-          <li>{pet.description}</li>
-          <img src={pet.imageUrl} />
-          <Button variant="contained" size="large" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</Button>
-        </ul>
-      </div> 
+	return (
+		<>
+			<div className="petsContainerSingle">
+			<div className='singlePet'>
+				<ul>
+					<img className="single-product-image" src={pet.imageUrl} />
+					<li>{pet.name}</li>
+					<li>${pet.price}</li>
+					<li>{pet.breed}</li>
+					<li>{pet.weight}</li>
+					<li>{pet.description}</li>
+				</ul>
+				<Button variant="contained" size="large" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</Button>
+			</div>
+			</div>
       {test.privledge == 'admin' ?
       <form onSubmit={formSubmit}>
         <label>Pet Name:</label>
@@ -65,11 +72,14 @@ const Pet = () => {
         <label>Pet Description:</label>
         <input name="petDescription" value={description} onChange={(e) => setDescription(e.target.value)} />
         <button type="submit">Update</button>
-        
       </form> : null}
-    </>
-  )
+		</>
+	);
+};
 
-}
+export default Pet;
 
-export default Pet
+
+
+ 
+

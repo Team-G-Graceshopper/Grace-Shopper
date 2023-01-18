@@ -7,6 +7,7 @@ import { updatePetAsync } from "../pet/petSlice";
 import { removeAccessorieAsync, updateAccessorieAsync, updateAccessorieQuantityAsync } from "../accesories/accessoriesSlice";
 import { fetchCartAccessoriesAsync, selectCartAccessories } from "./cartAcessoriesSlice";
 import  CartMessage  from "../cartmessage/CartMessage"
+import { Button } from '@mui/material'
 
 const Cart = () => {  
   const dispatch = useDispatch()
@@ -53,7 +54,7 @@ const Cart = () => {
     return(
       <div className="cartPets">
       <div>{pet[1].name}</div>
-      <button onClick={() => {removePetFromCart(pet[1].id, null)}}> remove </button>
+      <Button variant="contained"  onClick={() => {removePetFromCart(pet[1].id, null)}}> remove </Button >
       </div>
     )
   }): null}
@@ -62,9 +63,9 @@ const Cart = () => {
     return(
       <div className="cartAccessories">
       <div>{pet.name} {pet.UserAccessories.quantity}</div>
-      <button onClick={() => {addQuantity(pet.id, pet.UserAccessories.quantity + 1, test.id, pet.id)}}> + </button>
-      <button onClick={() => {subtractQuantity(pet.id, pet.UserAccessories.quantity - 1, test.id, pet.id)}}> - </button>
-      <button onClick={() => {removeAccessorieFromCart(pet.id, test.id, pet.id)}}> remove </button>
+      <Button variant="contained" onClick={() => {addQuantity(pet.id, pet.UserAccessories.quantity + 1, test.id, pet.id)}}> + </Button >
+      <Button variant="contained" onClick={() => {subtractQuantity(pet.id, pet.UserAccessories.quantity - 1, test.id, pet.id)}}> - </Button >
+      <Button variant="contained" onClick={() => {removeAccessorieFromCart(pet.id, test.id, pet.id)}}> remove </Button>
       </div>
     )
   }): null}
