@@ -4,19 +4,21 @@
 	padding: 0;
 }
 
+body {
+	font-family: verdana;
+	height: 400px;
+	background-image: url(../public/backdrop.png);
+	
+
+}
+
 .pets {
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	border: 1px solid black;
-	padding: 1rem;
-	width: 15vw;
-	height: 17vh;
-	overflow: scroll;
-	margin: 1rem;
+	border: 2px grey solid;
+	border-radius: 30px;
+	width: 292.66px;
+	height: 380px;
+	margin: 10px;
+	padding: 10px;
 }
 
 .pets:hover {
@@ -30,4 +32,165 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 1rem;
+	text-align: center;
+	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.upperBar {
+	display: flex;
+	background-color: rgb(5, 55, 69);
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	height: 30px;
+}
+
+.upperBarMessage {
+	color: white;
+	font-size: 10pt;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main_header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(135, 138, 139);
+	height: 140px;
+	border: none;
+	margin: 0;
+}
+
+.main_header h1 {
+	font-family: 'Bee Honey', sans-serif;;
+	font-size: 60pt;
+	color: skyblue;
+	text-align: center;
+	height: 50%;
+}
+
+.navbar {
+	background-color: rgb(236, 191, 136);
+	height: 50x;
+	outline: 1px solid;
+	outline-color: rgb(219, 219, 219);
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	
+}
+
+.navbar a {
+	font-family: 'Dogfish', sans-serif;
+	text-decoration: none;
+	color: rgb(54, 54, 54)
+
+  }
+
+  nav {
+	display: flex;
+	justify-content: space-around;
+  }
+  
+  .product-image {
+	
+	margin-left: auto;
+	margin-right: auto;
+	width: 270px;
+	height: 270px;
+	border-radius: 0.6rem 0.6rem 0 0;
+	object-fit: cover;
+  }
+.single-product-image {
+	margin-left: auto;
+	display: flex;
+	margin-right: auto;
+	width: 500px;
+	height: 500px;
+	border-radius: 0.6rem 0.6rem 0 0;
+	object-fit: cover;
+}
+
+.petsContainerSingle {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	text-align: center;
+	font-family: Dogfish;
+	font-size: 20pt;
+	color: rgb(139, 6, 6);
+}
+
+
+
+.adminMenu{
+	display: flex;
+	flex-direction: column;
+	width: 30vw;
+}
+
+
+h1{
+	text-align: center;
+}
+
+input[type="text"] {
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	margin-top: 20px;
+}
+
+
+.cartContainer{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 1rem;
+}
+
+.cartItems{
+	display: flex;
+	flex-direction: column;
+}
+
+.formDiv{
+	display: flex;
+	flex-direction: row;
+}
+
+.addressInput{
+	height: 3vh;
+	margin-right: .5rem;
+}
+
+input[type="password"] {
+	padding: 12px 20px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	width: 300px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+margin-top: 20px;
+}
+
+.thankYou{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 40vh;
+	font-size: 3rem;
 }

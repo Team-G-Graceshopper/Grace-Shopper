@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import Accessorie from '../features/accesories/Accessorie';
+import Accessories from '../features/accesories/Accessories';
+import Admin from '../features/admin/Admin';
 import AuthForm from '../features/auth/AuthForm';
 import Cart from '../features/cart/Cart';
+import GuestCart from '../features/cart/GuestCart';
+import ThankYou from '../features/cart/ThankYou';
 import Home from '../features/home/Home';
 import Pet from '../features/pet/Pet';
 import Pets from '../features/pets/Pets';
+import User from '../features/user/User';
 import { me } from './store';
 
 /**
@@ -29,6 +35,11 @@ const AppRoutes = () => {
 					<Route path='/pets' element={<Pets />} />
 					<Route path='/pets/:Id' element={<Pet />} />
 					<Route path='/cart' element={<Cart />} />
+					<Route path='/accessories' element={<Accessories />} />
+					<Route path='/admin' element={<Admin />} />
+					<Route path='/accessories/:Id' element={<Accessorie />} />
+					<Route path='/users/:Id' element={<User />} />
+					<Route path='/thankyou' element={<ThankYou />} />
 				</Routes>
 			) : (
 				<Routes>
@@ -41,6 +52,16 @@ const AppRoutes = () => {
 						path='/signup'
 						element={<AuthForm name='signup' displayName='Sign Up' />}
 					/>
+					<Route path='/*' element={<Home />} />
+					<Route to='/home' element={<Home />} />
+					<Route path='/pets' element={<Pets />} />
+					<Route path='/pets/:Id' element={<Pet />} />
+					<Route path='/cart' element={<GuestCart />} />
+					<Route path='/accessories' element={<Accessories />} />
+					<Route path='/admin' element={<Admin />} />
+					<Route path='/accessories/:Id' element={<Accessorie />} />
+					<Route path='/users/:Id' element={<User />} />
+					<Route path='/thankyou' element={<ThankYou />} />
 				</Routes>
 			)}
 		</div>

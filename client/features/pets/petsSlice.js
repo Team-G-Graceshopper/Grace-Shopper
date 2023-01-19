@@ -13,13 +13,19 @@ export const fetchPetsAsync = createAsyncThunk('fetchAllPets', async () => {
 export const petsSlice = createSlice({
 	name: 'pets',
 	initialState: [],
-	reducers: {},
+	reducers: {
+		filterPets(state, action) {
+			return state.filter(pet => pet.type == action.payload)
+		}
+	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchPetsAsync.fulfilled, (state, action) => {
 			return action.payload;
 		});
 	},
 });
+
+export const {filterPets} = petsSlice.actions 
 
 export const selectPets = (state) => state.pets;
 

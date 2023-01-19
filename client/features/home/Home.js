@@ -1,17 +1,22 @@
+
 import React from 'react';
 import { useSelector } from 'react-redux';
+import  StoreMessage  from "../storemessage/StoreMessage"
+import Slideshow from "./Slideshow";
 
-/**
- * COMPONENT
- */
+
+
 const Home = (props) => {
 	const username = useSelector((state) => state.auth.me.username);
 
 	return (
-		<div>
+		<div style={{minHeight:"800px"}}>
 			<h3>Welcome, {username}</h3>
+			<Slideshow/>
+			<StoreMessage />
 		</div>
 	);
 };
 
 export default Home;
+

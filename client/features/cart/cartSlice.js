@@ -10,16 +10,19 @@ export const fetchUserAsync = createAsyncThunk('fetchAUser', async (id) => {
 	}
 });
 
+
+
 export const cartSlice = createSlice({
-	name: 'cart',
-	initialState: [],
-	reducers: {},
-	extraReducers: (builder) => {
-		builder.addCase(fetchUserAsync.fulfilled, (state, action) => {
-			return action.payload;
-		});
-	},
-});
+  name: 'cart',
+  initialState: [],
+  reducers: {},
+  extraReducers: (builder => {
+    builder.addCase(fetchUserAsync.fulfilled, (state, action) => {
+      return action.payload
+    })
+
+  })
+})
 
 export const selectUser = (state) => state.cart;
 

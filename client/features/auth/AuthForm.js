@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { authenticate } from '../../app/store';
+import  LoginMessage  from "../loginmessage/LoginMessage"
+import { Button } from '@mui/material'
+
 
 /**
 The AuthForm component can be used for Login or Sign Up.
@@ -26,17 +29,19 @@ const AuthForm = ({ name, displayName }) => {
 					<label htmlFor='username'>
 						<small>Username</small>
 					</label>
-					<input name='username' type='text' />
+					<input className='loginForm' name='username' type='text' />
 				</div>
 				<div>
 					<label htmlFor='password'>
 						<small>Password</small>
 					</label>
-					<input name='password' type='password' />
+					<input className='loginForm' name='password' type='password' />
 				</div>
 				<div>
-					<button type='submit'>{displayName}</button>
+					<Button type='submit'>{displayName}</Button>
+					
 				</div>
+				<LoginMessage />
 			</form>
 		</div>
 	);
