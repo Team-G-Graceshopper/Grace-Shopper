@@ -12,6 +12,7 @@ const Accessories = () => {
   const dispatch = useDispatch()
   const accessories = useSelector(selectAccessories)
   const test = useSelector((state) => state.auth.me)
+  const [searchQuery, setSearchQuery] = useState("");
 
   const accessorieClick = (id) => {
     navigate(`/accessories/${id}`);
@@ -31,10 +32,19 @@ const Accessories = () => {
   }, [dispatch, render])
 
 
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredAccessories = accessories.filter((accessorie) =>
+    accessorie.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
+      <input type="text" placeholder="Search accessories" onChange={handleSearch} />
       <div className="petsContainer">
-        {accessories.map((accessorie) => {
+        {filteredAccessories.map((accessorie) => {
           return (
             
             <div className="pets">
