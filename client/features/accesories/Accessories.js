@@ -62,16 +62,16 @@ const Accessories = () => {
     <>
       <input type="text" placeholder="Search accessories" onChange={handleSearch} />
       <div className="petsContainer">
-        {filteredAccessories.map((accessorie) => {
+        {filteredAccessories.map((pet) => {
           return (
             
             <div className="pets">
-            <img className="product-image" src={accessorie.imageUrl} />
-            <Link to={`/accessories/${accessorie.id}`}>{accessorie.name}</Link>
-            <p>{accessorie.price}</p>
-            <Button className="addCart" onClick={() => addCartClick(accessorie.id, test.id, accessorie.id)}>Add to Cart</Button>
+            <img className="product-image" src={pet.imageUrl} />
+            <Link to={`/accessories/${pet.id}`}>{pet.name}</Link>
+            <p>{pet.price}</p>
+            {isLoggedIn ? <Button className="addCart" onClick={() => addCartClick(pet.id, test.id, pet.id)}>Add to Cart</Button> : <Button className="addCart" onClick={() => addCartNoUser(pet)}>Add to Cart</Button> }
             {test.privledge == 'admin' ? 
-            <button onClick={() => {deleteButton(accessorie.id)}}>Delete</button>
+            <button onClick={() => {deleteButton(pet.id)}}>Delete</button>
             : null }
           </div>
           )

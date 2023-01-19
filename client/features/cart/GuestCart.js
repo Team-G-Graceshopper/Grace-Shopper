@@ -19,7 +19,7 @@ const GuestCart = () => {
   const test = useSelector((state => state.auth.me))
   const user = useSelector(selectUser)
   const [qty, setQty] = useState(false)
-  const or = useState(selectOrders)
+  // const or = useState(selectOrders)
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
   const formSubmit = async (e) => {

@@ -66,8 +66,8 @@ const Pets = () => {
         return <div className="pets"> 
         <img className="product-image" src={pet.imageUrl} />
         <p onClick={() => petClick(pet.id)}>{pet.name} </p> <p>${pet.price} </p> <p>{pet.breed} </p>
-        <Button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</Button>
-        {isLoggedIn ? <button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</button> : <button className="addCart" onClick={() => addCartNoUser(pet)}>Add to Cart</button>}
+        
+        {isLoggedIn ? <Button className="addCart" onClick={() => addCartButton(pet.id, test.id)}>Add to Cart</Button> : <Button className="addCart" onClick={() => addCartNoUser(pet)}>Add to Cart</Button>}
      
         {test.privledge == 'admin' ? 
         <Button onClick={() => {deleteButton(pet.id)}}>Delete</Button>
