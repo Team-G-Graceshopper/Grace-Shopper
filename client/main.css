@@ -130,3 +130,23 @@ body {
 	flex-direction: column;
 	width: 30vw;
 }
+
+
+h1{
+	text-align: center;
+}
+
+input[type="text"] {
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	margin-top: 20px;
+}
+
+

@@ -45,7 +45,7 @@ const Cart = () => {
 
   return (
     <>
-    <h1>Pets</h1>
+    <h1>Your Pets: </h1>
     {user.pets ? Object.entries(user.pets).sort((a,b) => {
     if(a[1].name < b[1].name){
       return -1
@@ -58,7 +58,7 @@ const Cart = () => {
       </div>
     )
   }): null}
-    <h1>Accessories</h1>
+    <h1>Your Accessories: </h1>
   {user.accessories ? user.accessories.map((pet) => {
     return(
       <div className="cartAccessories">
