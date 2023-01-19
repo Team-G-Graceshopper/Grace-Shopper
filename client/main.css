@@ -131,6 +131,25 @@ body {
 	width: 30vw;
 }
 
+
+h1{
+	text-align: center;
+}
+
+input[type="text"] {
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	margin-top: 20px;
+}
+
+
 .cartContainer{
 	display: flex;
 	flex-direction: row;
@@ -141,4 +160,37 @@ body {
 .cartItems{
 	display: flex;
 	flex-direction: column;
+}
+
+.formDiv{
+	display: flex;
+	flex-direction: row;
+}
+
+.addressInput{
+	height: 3vh;
+	margin-right: .5rem;
+}
+
+input[type="password"] {
+	padding: 12px 20px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	width: 300px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+margin-top: 20px;
+}
+
+.thankYou{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 40vh;
+	font-size: 3rem;
 }

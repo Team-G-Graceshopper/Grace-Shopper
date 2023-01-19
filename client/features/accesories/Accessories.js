@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addAccessorieAsync, fetchAccessoriesAsync, selectAccessories, updateAccessorieAsync } from "./accessoriesSlice";
+import { addAccessorieAsync, destoryAccessorieAsync, fetchAccessoriesAsync, selectAccessories, updateAccessorieAsync } from "./accessoriesSlice";
 import { Button } from '@mui/material'
 
 import { useParams } from 'react-router-dom'
@@ -13,6 +13,7 @@ const Accessories = () => {
   const dispatch = useDispatch()
   const accessories = useSelector(selectAccessories)
   const test = useSelector((state) => state.auth.me)
+  const [searchQuery, setSearchQuery] = useState("");
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
 
@@ -29,6 +30,9 @@ const Accessories = () => {
     
   }
 
+  const accessorieClick = (id) => {
+    navigate(`/accessories/${id}`);
+  };
 
   const deleteButton = async (id) => {
     await dispatch(destoryAccessorieAsync(id))
@@ -46,10 +50,19 @@ const Accessories = () => {
   }, [dispatch, render])
 
 
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredAccessories = accessories.filter((accessorie) =>
+    accessorie.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
+      <input type="text" placeholder="Search accessories" onChange={handleSearch} />
       <div className="petsContainer">
-        {accessories.map((pet) => {
+        {filteredAccessories.map((pet) => {
           return (
             
             <div className="pets">
@@ -58,7 +71,7 @@ const Accessories = () => {
             <p>{pet.price}</p>
             {isLoggedIn ? <Button className="addCart" onClick={() => addCartClick(pet.id, test.id, pet.id)}>Add to Cart</Button> : <Button className="addCart" onClick={() => addCartNoUser(pet)}>Add to Cart</Button> }
             {test.privledge == 'admin' ? 
-            <button onClick={() => {deleteButton(pet.id)}}>Delete</button>
+            <Button onClick={() => {deleteButton(pet.id)}}>Delete</Button>
             : null }
           </div>
           )

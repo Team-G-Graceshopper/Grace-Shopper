@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchAccessorieAsync, selectAccessorie } from "./accessorieSlice";
-import { updateAccessorieAsync } from "./accessoriesSlice";
+import { fetchAccessorieAsync, selectAccessorie} from "./accessorieSlice";
+
+import { addAccessorieAsync, fetchAccessoriesAsync, selectAccessories, updateAccessorieAsync } from "./accessoriesSlice";
+import { Button } from '@mui/material'
+
 
 const Accessorie = () => {
   const [name, setName] = useState('')
@@ -14,10 +17,21 @@ const Accessorie = () => {
   const { Id } = useParams()
   const accessorie = useSelector(selectAccessorie)
 
+
+
+  const addCartClick = (id, userId, accessorieId) => {
+    dispatch(addAccessorieAsync({ id, userId, accessorieId }))
+  }
+
+  const deleteButton = async (id) => {
+    await dispatch(removeAccessorieAsync(id))
+    setRender(!render)
+  }
+
   const formSubmit = async (e) => {
     e.preventDefault()
     await dispatch(updateAccessorieAsync({id: Id, name, description}))
-    setRender(!render)
+    setRender(render)
   }
 
   useEffect(() => {
@@ -33,9 +47,18 @@ const Accessorie = () => {
 
   return (
     <>
-    <h3>{accessorie.name}</h3>
-    <p>{accessorie.price}</p>
-    <p>{accessorie.description}</p>
+    <div className="petsContainerSingle">
+    <div className='singlePet'>
+      <ul>
+    <img className="single-product-image" src={accessorie.imageUrl} />
+    <li>{accessorie.name}</li>
+    <li>{accessorie.price}</li>
+    <li>{accessorie.description}</li>
+    </ul>
+    <Button variant="contained" size="large" onClick={() => addCartClick(accessorie.id, test.id, accessorie.id)}>Add to Cart</Button>
+     
+    </div>
+    </div>
     {test.privledge == "admin" ? 
     <form onSubmit={formSubmit}>
       <label>Accessorie Name:</label>
@@ -48,4 +71,4 @@ const Accessorie = () => {
   )
 }
 
-export default Accessorie
+export default Accessorie;

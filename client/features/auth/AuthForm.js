@@ -29,13 +29,13 @@ const AuthForm = ({ name, displayName }) => {
 					<label htmlFor='username'>
 						<small>Username</small>
 					</label>
-					<input name='username' type='text' />
+					<input className='loginForm' name='username' type='text' />
 				</div>
 				<div>
 					<label htmlFor='password'>
 						<small>Password</small>
 					</label>
-					<input name='password' type='password' />
+					<input className='loginForm' name='password' type='password' />
 				</div>
 				<div>
 					<Button type='submit'>{displayName}</Button>

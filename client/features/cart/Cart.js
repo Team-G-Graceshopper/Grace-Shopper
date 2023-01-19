@@ -7,6 +7,7 @@ import { updatePetAsync } from "../pet/petSlice";
 import { removeAccessorieAsync, updateAccessorieAsync, updateAccessorieQuantityAsync } from "../accesories/accessoriesSlice";
 import { fetchCartAccessoriesAsync, selectCartAccessories } from "./cartAcessoriesSlice";
 import  CartMessage  from "../cartmessage/CartMessage"
+import { Button } from '@mui/material'
 import { addOrderAsync, fetchOrdersAsync, selectOrders } from "./orderSlice";
 
 const Cart = () => {  
@@ -72,7 +73,7 @@ const Cart = () => {
     <>
     <div className="cartContainer">
     <div className="cartItems">
-    <h1>Pets</h1>
+    <h1>Your Pets: </h1>
     {user.pets ? Object.entries(user.pets).sort((a,b) => {
     if(a[1].name < b[1].name){
       return -1
@@ -81,18 +82,18 @@ const Cart = () => {
     return(
       <div className="cartPets">
       <div>{pet[1].name}</div>
-      <button onClick={() => {removePetFromCart(pet[1].id, null)}}> remove </button>
+      <Button variant="contained"  onClick={() => {removePetFromCart(pet[1].id, null)}}> remove </Button >
       </div>
     )
   }): null}
-    <h1>Accessories</h1>
+    <h1>Your Accessories: </h1>
   {user.accessories ? user.accessories.map((pet) => {
     return(
       <div className="cartAccessories">
       <div>{pet.name} {pet.UserAccessories.quantity}</div>
-      <button onClick={() => {addQuantity(pet.id, pet.UserAccessories.quantity + 1, test.id, pet.id)}}> + </button>
-      <button onClick={() => {subtractQuantity(pet.id, pet.UserAccessories.quantity - 1, test.id, pet.id)}}> - </button>
-      <button onClick={() => {removeAccessorieFromCart(pet.id, test.id, pet.id)}}> remove </button>
+      <Button variant="contained" onClick={() => {addQuantity(pet.id, pet.UserAccessories.quantity + 1, test.id, pet.id)}}> + </Button >
+      <Button variant="contained" onClick={() => {subtractQuantity(pet.id, pet.UserAccessories.quantity - 1, test.id, pet.id)}}> - </Button >
+      <Button variant="contained" onClick={() => {removeAccessorieFromCart(pet.id, test.id, pet.id)}}> remove </Button>
       </div>
     )
   }): null}
