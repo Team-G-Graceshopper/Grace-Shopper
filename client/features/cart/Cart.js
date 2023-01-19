@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { fetchCartAsync, fetchUserAsync, selectCart, selectUser } from "./cartSlice";
 import { updatePetAsync } from "../pet/petSlice";
 import { removeAccessorieAsync, updateAccessorieAsync, updateAccessorieQuantityAsync } from "../accesories/accessoriesSlice";
@@ -13,6 +13,7 @@ const Cart = () => {
   const [address, setAddress] = useState('')
   const [petCart, setPetCart] = useState([])
   const [accCart, setAccCart] = useState([])
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const test = useSelector((state => state.auth.me))
   const user = useSelector(selectUser)
@@ -56,6 +57,7 @@ const Cart = () => {
       a.push(ha)
     })
     dispatch(addOrderAsync({address, pets: p.join(', '), accessories: a.join(', '), userId: test.id}))
+    navigate('/thankyou')
   }
 
   useEffect(() => {
@@ -72,11 +74,10 @@ const Cart = () => {
   }, [dispatch, qty])
 
 
-  console.log(petCart, accCart)
 
   return (
     <>
-    {isLoggedIn ? <div className="cartContainer">
+    <div className="cartContainer">
     <div className="cartItems">
     <h1>Pets</h1>
     {user.pets ? Object.entries(user.pets).sort((a,b) => {
@@ -109,28 +110,7 @@ const Cart = () => {
     <input name="shippingAddress" value={address} onChange={(e) => setAddress(e.target.value)} />
     <button type="submit">Order</button>
   </form>
-  </div> : 
-  <div className="cartContainer">
-  <div className="cartItems">
-  <h1>Pets</h1>
-  {petCart.map((pet) => {
-    return(
-      <div className="cartPets">
-      <div>{pet.name}</div>
-      </div>
-    )
-  })}
-  <h1>Accessories</h1>
-  {accCart.map((accessorie) => {
-    return(
-      <div className="cartAccessories">
-      <div>{accessorie.name}</div>
-      </div>
-    )
-  })}
-  </div>
-  </div>
-  }
+  </div> 
 
   <CartMessage />
   </>

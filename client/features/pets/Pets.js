@@ -8,6 +8,7 @@ import { destroyPetAsync, updatePetAsync } from "../pet/petSlice";
 
 const Pets = () => {
   const [render, setRender] = useState(false)
+  const [petCart, setPetCart] = useState([])
   const dispatch = useDispatch()
   const pets = useSelector(selectPets)
   const navigate = useNavigate()
@@ -22,10 +23,17 @@ const Pets = () => {
     dispatch(updatePetAsync({ id, userId }))
   }
 
-  let petCartArr = []
   const addCartNoUser = (petObj) => {
-    petCartArr.push(petObj)
-    localStorage.setItem("petCart", JSON.stringify(petCartArr))
+    if(petCart){
+      let ha = petCart
+      ha.push(petObj)
+      setPetCart(ha)
+    localStorage.setItem("petCart", JSON.stringify(ha))
+    }else{
+      setPetCart([petObj])
+      localStorage.setItem("petCart", JSON.stringify([petObj]))
+    }
+    
   }
 
   const deleteButton = async (id) => {
@@ -36,6 +44,8 @@ const Pets = () => {
 
   useEffect(() => {
     dispatch(fetchPetsAsync())
+    const petCartArr = JSON.parse(localStorage.getItem("petCart"));
+    setPetCart(petCartArr)
   }, [dispatch, render])
 
  

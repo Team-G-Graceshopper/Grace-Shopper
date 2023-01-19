@@ -9,16 +9,24 @@ import { useParams } from 'react-router-dom'
 
 const Accessories = () => {
   const [render, setRender] = useState(false)
+  const [accCart, setAccCart] = useState([])
   const dispatch = useDispatch()
   const accessories = useSelector(selectAccessories)
   const test = useSelector((state) => state.auth.me)
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
 
-  let accCartArr = []
   const addCartNoUser = (accObj) => {
-    accCartArr.push(accObj)
-    localStorage.setItem("accCart", JSON.stringify(accCartArr))
+    if(accCart){
+      let ha = accCart
+      ha.push(accObj)
+      setAccCart(ha)
+    localStorage.setItem("accCart", JSON.stringify(ha))
+    }else{
+      setAccCart([accObj])
+      localStorage.setItem("accCart", JSON.stringify([accObj]))
+    }
+    
   }
 
 
@@ -33,6 +41,8 @@ const Accessories = () => {
 
   useEffect(() => {
     dispatch(fetchAccessoriesAsync())
+    const accCartArr = JSON.parse(localStorage.getItem("accCart"));
+    setAccCart(accCartArr)
   }, [dispatch, render])
 
 
