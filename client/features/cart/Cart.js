@@ -11,8 +11,6 @@ import { addOrderAsync, fetchOrdersAsync, selectOrders } from "./orderSlice";
 
 const Cart = () => {  
   const [address, setAddress] = useState('')
-  const [petCart, setPetCart] = useState([])
-  const [accCart, setAccCart] = useState([])
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const test = useSelector((state => state.auth.me))
@@ -65,11 +63,6 @@ const Cart = () => {
     dispatch(fetchUserAsync(test.id))
     dispatch(fetchCartAccessoriesAsync(test.id))
     dispatch(fetchOrdersAsync())
-    }else {
-      const petCartArr = JSON.parse(localStorage.getItem("petCart"));
-      const accCartArr = JSON.parse(localStorage.getItem('accCart'))
-      setPetCart(petCartArr)
-      setAccCart(accCartArr)
     }
   }, [dispatch, qty])
 
