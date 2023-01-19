@@ -150,3 +150,14 @@ input[type="text"] {
 }
 
 
+.cartContainer{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 1rem;
+}
+
+.cartItems{
+	display: flex;
+	flex-direction: column;
+}

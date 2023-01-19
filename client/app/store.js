@@ -6,6 +6,7 @@ import adminSlice from '../features/admin/adminSlice';
 import authReducer from '../features/auth/authSlice';
 import cartAccessoriesSlice from '../features/cart/cartAcessoriesSlice';
 import cartSlice from '../features/cart/cartSlice';
+import orderSlice from '../features/cart/orderSlice';
 import petSlice from '../features/pet/petSlice';
 import petsSlice from '../features/pets/petsSlice';
 import userSlice from '../features/user/userSlice';
@@ -20,7 +21,8 @@ const store = configureStore({
     cartAccessories: cartAccessoriesSlice,
     users: adminSlice,
     accessorie: accessorieSlice,
-    user: userSlice
+    user: userSlice,
+    order: orderSlice
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

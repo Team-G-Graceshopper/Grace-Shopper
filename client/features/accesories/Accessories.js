@@ -9,10 +9,26 @@ import { useParams } from 'react-router-dom'
 
 const Accessories = () => {
   const [render, setRender] = useState(false)
+  const [accCart, setAccCart] = useState([])
   const dispatch = useDispatch()
   const accessories = useSelector(selectAccessories)
   const test = useSelector((state) => state.auth.me)
   const [searchQuery, setSearchQuery] = useState("");
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+
+
+  const addCartNoUser = (accObj) => {
+    if(accCart){
+      let ha = accCart
+      ha.push(accObj)
+      setAccCart(ha)
+    localStorage.setItem("accCart", JSON.stringify(ha))
+    }else{
+      setAccCart([accObj])
+      localStorage.setItem("accCart", JSON.stringify([accObj]))
+    }
+    
+  }
 
   const accessorieClick = (id) => {
     navigate(`/accessories/${id}`);
@@ -29,6 +45,8 @@ const Accessories = () => {
 
   useEffect(() => {
     dispatch(fetchAccessoriesAsync())
+    const accCartArr = JSON.parse(localStorage.getItem("accCart"));
+    setAccCart(accCartArr)
   }, [dispatch, render])
 
 
