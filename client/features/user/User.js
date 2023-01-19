@@ -31,27 +31,43 @@ const User = () => {
 
   return (
     <>
-      <h1>Cart</h1>
-      <h3>Pets</h3>
-      {user.pets ? user.pets.map((pet) => {
+    {test.privledge == 'admin' ? 
+    <>
+    <h1>Cart</h1>
+    <h3>Pets</h3>
+    {user.pets ? user.pets.map((pet) => {
+      return(
+        <ul>
+        <li>{pet.name}</li>
+        <li>{pet.price}</li>
+        <button onClick={() => {removePet(pet.id, null)}}>Remove</button>
+        </ul>
+      )
+    }) : null}
+    <h3>Accessories</h3>
+    {user.accessories ? user.accessories.map((pet) => {
+      return(
+        <ul>
+        <li>{pet.name}</li>
+        <li>{pet.price}</li>
+        <button onClick={() => {removeAccessorie(pet.id, user.id, pet.id)}}>Remove</button>
+        </ul>
+      )
+    }) : null} 
+    <ul>
+      {user.orders ? user.orders.map((order) => {
         return(
-          <ul>
-          <li>{pet.name}</li>
-          <li>{pet.price}</li>
-          <button onClick={() => {removePet(pet.id, null)}}>Remove</button>
-          </ul>
+          <>
+          <h3>Orders</h3>
+          <li>Order ID: {order.id}</li>
+          <li>Address: {order.address}</li>
+          <li>Pets: {order.pets}</li>
+          <li>Accessories: {order.accessories}</li>
+          </>
         )
       }) : null}
-      <h3>Accessories</h3>
-      {user.accessories ? user.accessories.map((pet) => {
-        return(
-          <ul>
-          <li>{pet.name}</li>
-          <li>{pet.price}</li>
-          <button onClick={() => {removeAccessorie(pet.id, user.id, pet.id)}}>Remove</button>
-          </ul>
-        )
-      }) : null}
+      </ul>
+    </>: null }
     </>
   )
 

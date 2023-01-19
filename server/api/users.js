@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-	models: { User, Pet, Accessorie },
+	models: { User, Pet, Accessorie, Order },
 } = require('../db');
 
 router
@@ -31,7 +31,8 @@ router
 			const user = await User.findByPk(req.params.id,
 				 {include: [ 
 					{model: Pet},
-					{model: Accessorie}
+					{model: Accessorie},
+					{model: Order}
 				]});
 			if (!user) {
 				res.status(404).send({ message: 'User not found' });
